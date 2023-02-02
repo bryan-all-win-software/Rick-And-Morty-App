@@ -14,6 +14,14 @@ protocol HomeFactory {
 
 struct HomeFactoryImplementation: HomeFactory {
     func makeHome() -> UIViewController {
-        HomeViewController()
+        HomeCollectionViewController(collectionViewLayout: makeLayout())
     }
+    
+    func makeLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: (UIScreen.main.bounds.width / 2) - 10, height: (UIScreen.main.bounds.width / 2) - 10)
+        layout.sectionInset = UIEdgeInsets(top: .zero, left: 5, bottom: .zero, right: 5)
+        return layout
+    }
+    
 }
